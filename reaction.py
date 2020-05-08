@@ -5,7 +5,7 @@ import random
 wikipedia.set_lang('es')
 
 with open('./data/rtas.txt', 'r') as f:
-    insultos = f.read().splitlines()
+    rtas = f.read().splitlines()
 
 
 def smartass(message):
@@ -33,7 +33,7 @@ def smartass(message):
     except Exception as e:
         print(e)
         print('no english')
-        rta = random.choice(insultos)
+        rta = random.choice(rtas)
 
     finally:
         wikipedia.set_lang('es')
