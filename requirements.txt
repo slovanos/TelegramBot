@@ -1,0 +1,8 @@
+requests==2.23.0
+wikipedia==(1, 4, 0) 
+
+# The wikipedia module is only necessary for the sample reaction implementation,
+# not necessary for the actual bot (botwrapper.py)
+
+# You can install these by running:
+# $ pip3 install -r requirements.txt
