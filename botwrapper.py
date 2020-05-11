@@ -30,15 +30,21 @@ class TelegramBot:
     def getUpdates(self, offset=None):
         url = self.baseURL+self.botToken+'/getUpdates'
         params = {'offset': offset}
-        r = requests.get(url, params)
-        return r.json()
+        try:
+            r = requests.get(url, params)
+            return r.json()
+        except Exception as e:
+            print(e)
+
+    def checkContent(self,r):
+        if r is not None and r['ok'] and r['result']:
+            return True
 
     def getLastUpdateID(self):
         r = self.getUpdates()
-        if r['result']:
+        
+        if self.checkContent(r):
             return r['result'][-1]['update_id']
-        else:
-            return None
 
     def getLastUpdates(self): # Before comming to existance it won't get anything
         if self.lastUpdateID is not None:
@@ -48,7 +54,7 @@ class TelegramBot:
             
         r = self.getUpdates(offset)
         
-        if r['result']:
+        if self.checkContent(r):
             self.lastUpdateID = r['result'][-1]['update_id']
 
         return r
@@ -97,7 +103,7 @@ class TelegramBot:
     def respond(self, r, reaction):
         #r = self.getLastUpdates()
         
-        if r['ok'] and r['result']:
+        if self.checkContent(r):
 
             for update in r['result']:
                 try:
