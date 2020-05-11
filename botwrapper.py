@@ -37,8 +37,7 @@ class TelegramBot:
             print(e)
 
     def checkContent(self,r):
-        if r is not None and r['ok'] and r['result']:
-            return True
+        return (r is not None) and r['ok'] and r['result']
 
     def getLastUpdateID(self):
         r = self.getUpdates()
