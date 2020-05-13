@@ -70,8 +70,11 @@ class TelegramBot:
         chatID = chatID or self.chatID
         url = self.baseURL+self.botToken+'/getChat'
         params = {'chat_id': chatID}
-        r = requests.get(url, params)
-        return r.json()
+        try:
+            r = requests.get(url, params)
+            return r.json()
+        except Exception as e:
+            print(e)
     
     # ++++++++ Basic POST methods ++++++++++++
     
@@ -79,23 +82,32 @@ class TelegramBot:
         chatID = chatID or self.chatID
         url = self.baseURL+self.botToken+'/sendMessage'
         data = {'chat_id': chatID, 'text': message}
-        r = requests.post(url, data)
-        return r.json()
+        try:
+            r = requests.post(url, data)
+            return r.json()
+        except Exception as e:
+            print(e)
 
     def sendLocalPhoto(self, photoPath, chatID=None):
         chatID = chatID or self.chatID
         url = self.baseURL+self.botToken+'/sendPhoto'
         file = { 'photo': open(photoPath, 'rb')}
         data = {'chat_id': chatID }
-        r = requests.post(url, files=file, data=data)
-        return r.json()
+        try:
+            r = requests.post(url, files=file, data=data)
+            return r.json()
+        except Exception as e:
+            print(e)
 
     def sendRemotePhoto(self, photoUrl, chatID=None): #testear
         chatID = chatID or self.chatID
         url = self.baseURL+self.botToken+'/sendPhoto'
         data = {'chat_id': chatID, 'photo': photoUrl}
-        r = requests.post(url, data)
-        return r.json()
+        try:
+            r = requests.post(url, data)
+            return r.json()
+        except Exception as e:
+            print(e)
 
     # ++++++++++ Others +++++++++++++++++++
 
