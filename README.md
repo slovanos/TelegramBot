@@ -1,6 +1,6 @@
 # Telegram Bot
 
-A simple Telegram-API-wrapper to allow your bot to respond to messages
+A low-requirements Telegram-API-wrapper for your bot to respond to messages
 
 <img src="https://raw.githubusercontent.com/slovanos/images/master/joeybot.jpg" width=300>
 
