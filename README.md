@@ -10,7 +10,7 @@ https://github.com/slovanos/tgbot
 
 ## Requirements:
 
-- requests==2.18.4
+- requests>=2.31.0
 - wikipedia==(1, 4, 0)
 
 The wikipedia module is only necessary for the sample reaction implementation, not necessary for the actual bot.
